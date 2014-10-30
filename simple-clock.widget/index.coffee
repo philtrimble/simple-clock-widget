@@ -1,15 +1,17 @@
 stylingOptions =
-  background: 'rgba(#fff, 0.2)' 
+  # background color
+  ## background: 'rgba(#fff, 0.2)' 
   # show fullscreen -> true
-  fullscreen: false
+  fullscreen: true
   # display position 'top', 'middle', 'bottom'
-  vertical: 'bottom'
+  vertical: 'middle'
+
 
 dateOptions =
   # display not only 'time' also 'date'
-  showDate: false
+  showDate: true
   # format of 'date'
-  date: '%d/%m/%Y %a'
+  date: '%m/%d/%Y %a'
 
 format = (->
   if dateOptions.showDate
@@ -35,7 +37,7 @@ update: (output) ->
     data = output.split('\n')
 
     html = data[1]
-    html += '<span class="date">'
+    html += '<br><span class="date">'
     html += data[0]
     html += '</span>'
     
@@ -64,13 +66,15 @@ style: (->
 
   return """
     background: #{stylingOptions.background}
-    color: #FFFFFF
+    color: #F2F2F2
+    text-shadow: 2px 2px #181818;
     font-family: Helvetica Neue
     left: 3%
     top: #{top}
     bottom: #{bottom}
     transform: #{transform}
     width: #{width}
+    line-height: 100px;
 
     #simpleClock
       font-size: #{fontSize}
@@ -80,7 +84,7 @@ style: (->
       padding: 10px 20px
 
     #simpleClock .date
-      margin-left: .5em
+      margin-left: 0em
       font-size: .5em
   """
 )()
